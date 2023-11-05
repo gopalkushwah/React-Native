@@ -15,7 +15,7 @@ import User from "./components/User";
   return(
     <SafeAreaView>
       <View >
-        <User name="Gopal" age={22} address="Bhopal"/>
+        <User />
       </View>
     </SafeAreaView>
   )
