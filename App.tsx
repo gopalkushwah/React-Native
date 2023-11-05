@@ -13,8 +13,25 @@ import {
       borderRadius : 20,
       margin :10
     }}>
-      <Text>Hello</Text>
-      <Button  title="Click here"></Button>
+      {/* 
+        <Text> component is used for displaying text or text content within your mobile application.
+        It's the primary component for rendering text elements and is an essential part of building user interfaces.
+      */}
+      <Text>🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩</Text>
+      <Text>🚩🚩🚩Jai Shree Ram    🚩🚩🚩</Text>
+      <Text>🚩🚩🚩Jai Shree Ram    🚩🚩🚩</Text>
+      <Text>🚩🚩🚩Jai Shree Ram    🚩🚩🚩</Text>
+      <Text>🚩🚩🚩Jai Shree Ram    🚩🚩🚩</Text>
+      <Text>🚩🚩🚩Jai Shree Ram    🚩🚩🚩</Text>
+      <Text>🚩🚩🚩Jai Shree Ram    🚩🚩🚩</Text>
+      <Text>🚩🚩🚩Jai Shree Ram    🚩🚩🚩</Text>
+      <Text>🚩🚩🚩Jai Shree Ram    🚩🚩🚩</Text>
+      <Text>🚩🚩🚩Jai Shree Ram    🚩🚩🚩</Text>
+      <Text>🚩🚩🚩Jai Shree Ram    🚩🚩🚩</Text>
+      <Text>🚩🚩🚩Jai Shree Ram    🚩🚩🚩</Text>
+      <Text>🚩🚩🚩Jai Shree Ram    🚩🚩🚩</Text>
+      <Text>🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩🚩</Text>
+      
     </View>
   )
  }
