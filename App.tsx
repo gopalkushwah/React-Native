@@ -5,53 +5,31 @@ import {
   StyleSheet,
   Button,
   Alert,
+  SafeAreaView,
   
  } from "react-native";
+import User from "./components/User";
 
  const App = () : JSX.Element =>{
 
-  const handleButtonPress = () => {
-    Alert.alert('Button Pressed', 'Hello from React Native!');
-  };
-
   return(
+    <SafeAreaView>
     <View style={{
-      borderRadius : 20,
-      margin :10
+      height : '100%'
     }}>
-      {/* 
-        the <Button> component is used for creating buttons or interactive elements within your mobile application. 
-        It is a core component for handling user interaction and providing a way for users to trigger actions when pressed. 
-        The <Button> component is typically used for actions like submitting a form, navigating to another screen, or triggering some application logic.
-      */}
-
-      <Button 
-        title="Hello"
-        color="red"
-        onPress={()=>{
-          Alert.alert("जय श्री राम   🚩");
-        }}
-        accessibilityLabel="Press this button"
-        
-      ></Button>
-      <View 
-        style={{
-          marginTop : 5
-        }}
-      >
-        <Button 
-          title="Click me"
-          color="red"
-          onPress={handleButtonPress}
-          accessibilityLabel="Press this button"
-          // disabled={true}
-          disabled={false}
-          testID="my-button"
-        ></Button>
+      <View style={{
+      flex : 1,
+      // flexDirection: 'row',
+      }}>
+        <User name="gopal" age="22" mobile="2121454875"/>
+        <User name="anish" age="45" mobile="8877998877"/>
+        <User name="satyam" age="100" mobile="2233665588"/>
+        <User name="giriraj" age="110" mobile="8787454545"/>
+        <User name="ritik" age="40" mobile="8754548878"/>
+        <User name="ram" age="87" mobile="7798797954"/>
       </View>
-      
-      
     </View>
+    </SafeAreaView>
   )
  }
 
