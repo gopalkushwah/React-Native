@@ -1,51 +1,62 @@
 import React, { useState } from 'react'
-import { Button, Text, View } from 'react-native';
+import { Button, Text, View, StyleSheet } from 'react-native';
 import Contacts from './Contacts';
 {/*
-     "state" refers to a fundamental concept that represents the data that a component can maintain and manage throughout its lifecycle.
-      A component's state is used to store and track information that can change over time and affect how the component renders and behaves. 
-      State is one of the key factors that make React Native applications dynamic and responsive.
+    "props" is short for "properties," and it is a mechanism for passing data from a parent component to a child component. 
+    Props allow you to transmit information and configuration to child components, which they can then use to render content, handle user interactions, or perform various tasks. 
+    Props are a fundamental concept in React and React Native, and they play a key role in building modular and reusable components.
 
+        Here are some important aspects of props in React Native:
 
-        Local Component State: 
-                State is a local feature of a component. 
-                Each component can have its own state, and it's not shared with other components. 
-                This means that changes to the state of one component don't affect the state of another component.
+        Data Passing: 
+                Props are used to pass data from a parent component to a child component. 
+                This data can include variables, objects, functions, and other values.
 
-        Mutable: 
-                State is mutable, which means you can update it within a component. 
-                React Native provides a function called setState that allows you to update the state and trigger re-renders.
+        Immutable: 
+                Props are read-only and cannot be modified by the child component. 
+                They are meant for one-way communication from parent to child.
 
-        Reactive: 
-                When the state of a component changes, React Native automatically re-renders the component to reflect the new state. 
-                This is what allows for dynamic and interactive user interfaces.
+        Dynamic Rendering: 
+                Props are often used to make components more dynamic. 
+                By passing different props, you can control how a child component renders and behaves.
 
-        Initialization: 
-                You typically initialize state in a component's constructor or using a class property. 
-                In functional components, you use the useState hook to manage state.
-
-        Use Cases: 
-                State is commonly used to manage variables like user input, application data, component visibility, and other dynamic information. 
-                For example, you can use state to handle form input, control the visibility of modals or pop-ups, or manage application data fetched from an API.
+        Customization: 
+                You can customize the behavior and appearance of a component by adjusting the props passed to it.
 */}
 
-const User = () => {
-    
-    const [name,setName] = useState("Ram");
-    const [btnColor,setBtnColor] = useState("black");
-    const handleName = () =>{
-        name === "Ram" ? setName("Satyam") : setName("Ram");
-        name === "Ram" ? setBtnColor("red") : setBtnColor("black");
-    }
+const User = (props) : JSX.Element => {
     return (
         <View >
-            <Text 
-            style={{
+            <Text style={{
+                color: 'white',
                 fontSize : 30,
-                marginBottom : 5
+                alignItems :'center',
+                padding : 10,
+                marginBottom : 5,
+                backgroundColor : 'black'
             }}>
-                {name}</Text>
-            <Button title='Change Name' color={btnColor} onPress={handleName}></Button>
+                {props.name}
+            </Text>
+            <Text style={{
+                color: 'white',
+                fontSize : 30,
+                alignItems :'center',
+                padding : 10,
+                marginBottom : 5,
+                backgroundColor : 'red'
+            }}>
+                {props.age}
+            </Text>
+            <Text style={{
+                color: 'white',
+                fontSize : 30,
+                alignItems :'center',
+                padding : 10,
+                marginBottom : 5,
+                backgroundColor : 'green'
+            }}>
+                {props.address}
+            </Text>
         </View>
     )
 }
