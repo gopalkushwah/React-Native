@@ -122,6 +122,27 @@ const User = () : JSX.Element  => {
             )}
             keyExtractor={item=>item.id}
             ></FlatList>
+
+
+
+            
+            {/*
+                    list with grid pattern using numColumns , 
+                    we can use the numColumns prop to specify the number of columns you want in a row
+            */}
+            {/*             
+            <FlatList style={{
+                height: 730
+            }}
+                data={data}
+                keyExtractor={(item) => item.id.toString()}
+                numColumns={2}
+                renderItem={({item})=>(
+                    <View style={styles.item}>
+                    <Text style={styles.listText}>{item.name}</Text>
+                    </View>
+                )}
+            /> */}
         </View>
     )
 }
@@ -145,7 +166,19 @@ const styles = StyleSheet.create({
         marginBottom : 2,
         borderTopLeftRadius :15,
         borderBottomRightRadius : 15
-    }
+    },
+    item: {
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: 100,
+        margin: 5,
+        backgroundColor: 'rgba(0,0,0,0.6)',
+        borderTopLeftRadius :30,
+        borderBottomRightRadius : 30,
+        
+      },
 })
 
 export default User;
