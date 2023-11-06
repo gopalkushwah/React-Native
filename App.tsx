@@ -1,24 +1,19 @@
-import React from "react";
+import React, { Component } from "react";
 import { 
   View,
-  Text,
-  StyleSheet,
-  Button,
-  Alert,
-  SafeAreaView,
   
  } from "react-native";
 import User from "./components/User";
 
- const App = () : JSX.Element =>{
+ class App extends Component{
 
-  return(
-    <SafeAreaView>
-      <View >
-        <User />
-      </View>
-    </SafeAreaView>
-  )
+  render(){
+    return(
+        <View >
+          <User />
+        </View>
+    )
+  }
  }
 
 
