@@ -10,7 +10,7 @@ import User from "./components/User";
   render(){
     return(
         <View >
-          <User />
+          <User count={25}/>
         </View>
     )
   }
