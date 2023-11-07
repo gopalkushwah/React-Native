@@ -5,9 +5,8 @@ import {
 import User from "./components/User";
 const App = () => {
   return (
-    <View>
+    <View style={{backgroundColor :'green',flex : 1}}>
       <User></User>
-
     </View>
   )
 }
