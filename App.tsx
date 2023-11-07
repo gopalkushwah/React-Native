@@ -1,20 +1,15 @@
-import React, { Component } from "react";
+import React from "react";
 import { 
-  View,
-  
+  View
  } from "react-native";
 import User from "./components/User";
+const App = () => {
+  return (
+    <View>
+      <User></User>
 
- class App extends Component{
+    </View>
+  )
+}
 
-  render(){
-    return(
-        <View >
-          <User count={25}/>
-        </View>
-    )
-  }
- }
-
-
- export default App;
+export default App
