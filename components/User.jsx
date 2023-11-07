@@ -2,7 +2,9 @@ import React, { useEffect, useState } from 'react'
 import {View, Button, Text } from 'react-native';
 
 {/*
-    
+    we can use the useEffect hook to mimic the behavior of componentDidMount in class components. 
+    componentDidMount is a lifecycle method that is called after a component has been mounted (i.e., inserted into the DOM). 
+    The useEffect hook can achieve the same effect by running a function after the initial render of a functional component.
 */}
 const User =() => {
 
