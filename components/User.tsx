@@ -1,86 +1,125 @@
 import React from 'react'
-import {StyleSheet, Text, View} from 'react-native';
+import {Alert, StyleSheet, Text, TouchableHighlight, View} from 'react-native';
 
 const User = () => {
     return (
-        <View style={styles.mainContainer}>
-           {/* <Text style={{color:'black',fontSize : 50}}>hello</Text> */}
-           <View style={styles.box1}>
-                <View style={styles.box11}>
-                <View style={[styles.box12,{backgroundColor : 'orange'}]}>
-                        
-                        </View>
-                        <View style={styles.box13}>
-                            
-                        </View>
-                </View>
-                <View style={styles.box12}>
-                    <View style={styles.box11}>
-                    
-                    </View>
-                    <View style={[styles.box12,{backgroundColor : 'orange'}]}>
-                        
-                    </View>
-                    <View style={styles.box13}>
-                        
-                    </View>
-                </View>
-                <View style={styles.box13}>
-                <View style={styles.box11}>
-                    
-                    </View>
-                    <View style={[styles.box12,{backgroundColor : 'orange'}]}>
-                        
-                    </View>
-                </View>
-           </View>
-           <View style={styles.box2}>
-           <View style={styles.box13}>
-                    
-                    </View>
-                    <View style={styles.box12}>
-                    
-                </View>
-           </View>
-           <View style={styles.box3}></View>
+        <View>
+           <TouchableHighlight
+           
+           >
+            <Text 
+            onPress={()=>{
+                Alert.alert("Jai Shree Ram ")
+            }}
+            style={[styles.button,styles.btn]}>Button</Text>
+           </TouchableHighlight>
+           <TouchableHighlight
+           
+           >
+            <Text 
+            onPress={()=>{
+                Alert.alert("Jai Shree Ram ")
+            }}
+            style={[styles.button1,styles.btn]}>Button</Text>
+           </TouchableHighlight>
+           <TouchableHighlight
+           
+           >
+            <Text 
+            onPress={()=>{
+                Alert.alert("Jai Shree Ram ")
+            }}
+            style={[styles.button2,styles.btn,{backgroundColor : 'black'}]}>Button</Text>
+           </TouchableHighlight>
+           <TouchableHighlight
+           
+           >
+            <Text 
+            onPress={()=>{
+                Alert.alert("Jai Shree Ram ")
+            }}
+            style={[styles.button3,styles.btn]}>Button</Text>
+           </TouchableHighlight>
+           <TouchableHighlight
+           
+           >
+            <Text 
+            onPress={()=>{
+                Alert.alert("Jai Shree Ram ")
+            }}
+            style={[styles.button4,styles.btn]}>Button</Text>
+           </TouchableHighlight>
+           <TouchableHighlight
+           
+           >
+            <Text 
+            onPress={()=>{
+                Alert.alert("Jai Shree Ram ")
+            }}
+            style={[styles.button5,styles.btn]}>Button</Text>
+           </TouchableHighlight>
+           <TouchableHighlight
+           
+           >
+            <Text 
+            onPress={()=>{
+                Alert.alert("Jai Shree Ram ")
+            }}
+            style={[styles.button6,styles.btn]}>Button</Text>
+           </TouchableHighlight>
         </View>
     )
 }
 
 const styles = StyleSheet.create({
-    mainContainer : {
-        flex : 1,
-        // height : '100%',
-        backgroundColor : 'green'
+    btn :{
+        fontSize : 30,
+        margin : 10,
+        marginTop : 20,
+        textAlign : 'center',
+        padding : 5,
+        backgroundColor : 'white',
+        borderWidth :1 ,
+        borderRadius :10,
+        elevation : 10
+
     },
-    box1 : {
-        flex : 2,
+    button : {
+        color : 'red',
+        borderColor : 'red',
+        shadowColor : 'red',
+    },
+    button1 : {
+        color : 'blue',
+        borderColor : 'blue',
+        shadowColor : 'red',
+    },
+    button2 : {
+        color : 'yellow',
+        borderColor : 'yellow',
+        shadowColor : 'yellow',
         backgroundColor : 'red',
-        flexDirection :'row'
+        
     },
-    box2 : {
-        flex : 1,
-        backgroundColor : 'blue',
-        flexDirection :'row'
+    button3 : {
+        color : 'green',
+        borderColor : 'green',
+        shadowColor : 'green',
     },
-    box3 : {
-        flex : 1,
-        backgroundColor : 'yellow'
+    button4 : {
+        color : 'pink',
+        borderColor : 'pink',
+        shadowColor : 'pink',
     },
-    box11 : {
-        flex : 1,
-        backgroundColor : 'blue',
-        margin : 5
+    button5 : {
+        color : 'orange',
+        borderColor : 'orange',
+        shadowColor : 'orange',
     },
-    box12 : {
-        flex : 1,
-        backgroundColor : 'black',
-        margin : 5
-    },
-    box13 : {
-        flex : 1,
-        backgroundColor : 'skyblue',
-        margin : 5
+    button6: {
+        color : 'blue',
+        borderColor : 'blue',
+        shadowColor : 'red',
     }
 })
 
