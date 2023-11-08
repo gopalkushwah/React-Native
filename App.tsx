@@ -5,7 +5,7 @@ import {
 import User from "./components/User";
 const App = () => {
   return (
-    <View >
+    <View style={{flex : 1}}>
       <User></User>
     </View>
   )

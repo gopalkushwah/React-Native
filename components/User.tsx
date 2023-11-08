@@ -1,125 +1,85 @@
-import React from 'react'
-import {Alert, StyleSheet, Text, TouchableHighlight, View} from 'react-native';
+import React, { useState } from 'react'
+import {Alert, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 
 const User = () => {
+    const [selectedRadio, setSelectedRadio] = useState(1);
+
     return (
-        <View>
-           <TouchableHighlight
-           
-           >
-            <Text 
-            onPress={()=>{
-                Alert.alert("Jai Shree Ram ")
-            }}
-            style={[styles.button,styles.btn]}>Button</Text>
-           </TouchableHighlight>
-           <TouchableHighlight
-           
-           >
-            <Text 
-            onPress={()=>{
-                Alert.alert("Jai Shree Ram ")
-            }}
-            style={[styles.button1,styles.btn]}>Button</Text>
-           </TouchableHighlight>
-           <TouchableHighlight
-           
-           >
-            <Text 
-            onPress={()=>{
-                Alert.alert("Jai Shree Ram ")
-            }}
-            style={[styles.button2,styles.btn,{backgroundColor : 'black'}]}>Button</Text>
-           </TouchableHighlight>
-           <TouchableHighlight
-           
-           >
-            <Text 
-            onPress={()=>{
-                Alert.alert("Jai Shree Ram ")
-            }}
-            style={[styles.button3,styles.btn]}>Button</Text>
-           </TouchableHighlight>
-           <TouchableHighlight
-           
-           >
-            <Text 
-            onPress={()=>{
-                Alert.alert("Jai Shree Ram ")
-            }}
-            style={[styles.button4,styles.btn]}>Button</Text>
-           </TouchableHighlight>
-           <TouchableHighlight
-           
-           >
-            <Text 
-            onPress={()=>{
-                Alert.alert("Jai Shree Ram ")
-            }}
-            style={[styles.button5,styles.btn]}>Button</Text>
-           </TouchableHighlight>
-           <TouchableHighlight
-           
-           >
-            <Text 
-            onPress={()=>{
-                Alert.alert("Jai Shree Ram ")
-            }}
-            style={[styles.button6,styles.btn]}>Button</Text>
-           </TouchableHighlight>
+        <View style={styles.main}>
+          
+            <TouchableOpacity
+                onPress={()=>setSelectedRadio(1)}
+            >    
+                <View style={styles.radioWrapper}>
+                    <View style={styles.radioBtn}>
+                        {
+                            selectedRadio === 1 ? <View style={styles.radioBtnIn}></View> : null
+                        }
+                    </View>
+                    <Text style={styles.radioText}>Radio 1</Text>
+                </View>
+            </TouchableOpacity>
+            <Text></Text>
+            <TouchableOpacity
+                onPress={()=>setSelectedRadio(2)}
+            >
+                <View style={styles.radioWrapper}>
+                    <View style={styles.radioBtn}>
+                        {
+                            selectedRadio === 2 ? <View style={styles.radioBtnIn}></View> : null
+                        }
+                    </View>
+                    <Text style={styles.radioText}>Radio 2</Text>
+                </View>
+            </TouchableOpacity>
+            <Text></Text>
+            
+            <TouchableOpacity
+                onPress={()=>setSelectedRadio(3)}
+            >
+                <View style={styles.radioWrapper}>
+                    <View style={styles.radioBtn}>
+                        {
+                            selectedRadio === 3 ? <View style={styles.radioBtnIn}></View> : null
+                        }
+                    </View>
+                    <Text style={styles.radioText}>Radio 3</Text>
+                </View>
+            </TouchableOpacity>
+            
         </View>
     )
 }
 
 const styles = StyleSheet.create({
-    btn :{
-        fontSize : 30,
-        margin : 10,
-        marginTop : 20,
-        textAlign : 'center',
-        padding : 5,
-        backgroundColor : 'white',
-        borderWidth :1 ,
-        borderRadius :10,
-        elevation : 10
-
+    main : {
+        flex : 1,
+        alignItems :'center',
+        justifyContent : 'center'
     },
-    button : {
-        color : 'red',
+    radioBtn : {
+        height : 40,
+        width : 40,
         borderColor : 'red',
-        shadowColor : 'red',
+        borderWidth : 1,
+        borderRadius : 20,
+        alignItems: 'center',
+        justifyContent :'center'
     },
-    button1 : {
-        color : 'blue',
-        borderColor : 'blue',
-        shadowColor : 'red',
-    },
-    button2 : {
-        color : 'yellow',
-        borderColor : 'yellow',
-        shadowColor : 'yellow',
+    radioBtnIn:{
+        height : 30,
+        width : 30,
         backgroundColor : 'red',
-        
+        borderRadius : 15,
     },
-    button3 : {
-        color : 'green',
-        borderColor : 'green',
-        shadowColor : 'green',
+    radioText : {
+        fontSize : 20,
+        color :'black',
+        marginLeft : 20
     },
-    button4 : {
-        color : 'pink',
-        borderColor : 'pink',
-        shadowColor : 'pink',
-    },
-    button5 : {
-        color : 'orange',
-        borderColor : 'orange',
-        shadowColor : 'orange',
-    },
-    button6: {
-        color : 'blue',
-        borderColor : 'blue',
-        shadowColor : 'red',
+    radioWrapper:{
+        alignItems:'center',
+        flexDirection:'row'
     }
 })
 
