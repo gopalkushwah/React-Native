@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {StyleSheet, View, Pressable, Alert, Text} from 'react-native';
 {/*
     the Pressable component is used to create interactive and touchable elements that respond to user presses and gestures. 
@@ -6,16 +6,24 @@ import {StyleSheet, View, Pressable, Alert, Text} from 'react-native';
     The Pressable component is highly customizable and provides options for handling various touch events.
 */}
 const User = () => {
+    const [onHoverInEff, setOnHoverIn] = useState('red')
     return (
         <View style={styles.main}>
             <View>
                 <Pressable
                     onPress={()=>{
                         Alert.alert("On Press called")
+                        
+
                     }}
-                    // onLongPress={()=>{
-                    //     Alert.alert("On Long Press called")
-                    // }}
+                    onLongPress={()=>{
+                        Alert.alert("On Long Press called");
+                        setOnHoverIn('black');
+                    }}
+                    onHoverIn={()=>{
+                        setOnHoverIn('black');
+                    }}
+                    delayLongPress={500}
                     // onPressIn={()=>{
                     //     Alert.alert("On Press In called")
                     // }}
@@ -24,7 +32,7 @@ const User = () => {
                     // }}
                     android_ripple={{ color: 'pink' }}
                     style={{
-                        backgroundColor:'red',
+                        backgroundColor:onHoverInEff,
                         borderRadius : 5,
                         
                     }}
