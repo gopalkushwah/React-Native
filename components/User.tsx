@@ -1,39 +1,28 @@
 import React, { useState } from 'react'
-import {ActivityIndicator, Button, StyleSheet, View} from 'react-native';
+import {Button, StyleSheet, View,Modal, Text} from 'react-native';
 
 const User = () => {
-    const [showActivityIndicator, setShowActivityIndicator] = useState(false);
+    const [showModal, setShowModal] = useState(false);
     
-    const displayActivitiIndicator = () =>{
-        setShowActivityIndicator(true);
-
-
-        // just think we are calling an api here to fetch data from db and it will take time of 5 second
-        setTimeout(()=>{
-            setShowActivityIndicator(false);
-        },5000)
-
-    }
     return (
         <View style={styles.main}>
-          {/* <ActivityIndicator size={"small"} color={"red"} animating={true}></ActivityIndicator>
-          <ActivityIndicator size={"large"} color={"blue"} animating={true}></ActivityIndicator> */}
-
-
-          {/* <ActivityIndicator size={50} color={"red"} animating={true}></ActivityIndicator> */}
-
-{/* 
-          <ActivityIndicator size={100} color={"black"} animating={showActivityIndicator}></ActivityIndicator>
-          <Button 
-            title="click me"
-            onPress={displayActivitiIndicator}
-          ></Button> */}
-
-         {showActivityIndicator ? <ActivityIndicator size={100} color={"black"} ></ActivityIndicator> : null}
-          <Button 
-            title="click me"
-            onPress={displayActivitiIndicator}
-          ></Button>
+            <Modal
+                transparent={true}
+                visible={showModal}
+                animationType='slide'
+            >
+                <View style={styles.modalView}>
+                    <View style={styles.modalInnerView}>
+                        <Text style={styles.modalText}>Jai Shree Ram 🚩</Text>
+                        <Button title='Close' onPress={()=>setShowModal(false)}></Button>
+                    </View>  
+                </View>
+            </Modal>
+            <View
+                style={styles.openModalView}
+            >
+                <Button title='Open Modal' onPress={()=>setShowModal(true)}></Button>
+            </View>
         </View>
     )
 }
@@ -41,8 +30,28 @@ const User = () => {
 const styles = StyleSheet.create({
     main : {
         flex : 1,
-        alignItems :'center',
-        justifyContent : 'center',
+        
+    },
+    openModalView:{
+        flex : 1,
+        justifyContent :'flex-end'
+    },
+    modalView : {
+        flex : 1,
+        justifyContent :'center',
+        alignItems : 'center'
+    },
+    modalInnerView : {
+        backgroundColor : 'white',
+        padding : 30,
+        shadowColor : 'black',
+        elevation : 30,
+        borderRadius : 5
+    },
+    modalText : {
+        color : 'black',
+        marginBottom : 10,
+        fontSize : 30
     }
 })
 
