@@ -1,27 +1,42 @@
-import React, { useState } from 'react'
-import {Button, StyleSheet, View,Modal, Text} from 'react-native';
-
+import React from 'react'
+import {StyleSheet, View, Pressable, Alert, Text} from 'react-native';
+{/*
+    the Pressable component is used to create interactive and touchable elements that respond to user presses and gestures. 
+    It allows you to wrap other components and provide touchable behavior to them, similar to buttons, images, or any other view elements. 
+    The Pressable component is highly customizable and provides options for handling various touch events.
+*/}
 const User = () => {
-    const [showModal, setShowModal] = useState(false);
-    
     return (
         <View style={styles.main}>
-            <Modal
-                transparent={true}
-                visible={showModal}
-                animationType='slide'
-            >
-                <View style={styles.modalView}>
-                    <View style={styles.modalInnerView}>
-                        <Text style={styles.modalText}>Jai Shree Ram 🚩</Text>
-                        <Button title='Close' onPress={()=>setShowModal(false)}></Button>
-                    </View>  
-                </View>
-            </Modal>
-            <View
-                style={styles.openModalView}
-            >
-                <Button title='Open Modal' onPress={()=>setShowModal(true)}></Button>
+            <View>
+                <Pressable
+                    onPress={()=>{
+                        Alert.alert("On Press called")
+                    }}
+                    // onLongPress={()=>{
+                    //     Alert.alert("On Long Press called")
+                    // }}
+                    // onPressIn={()=>{
+                    //     Alert.alert("On Press In called")
+                    // }}
+                    // onPressOut={()=>{
+                    //     Alert.alert("On Press Out called")
+                    // }}
+                    android_ripple={{ color: 'pink' }}
+                    style={{
+                        backgroundColor:'red',
+                        borderRadius : 5,
+                        
+                    }}
+                >
+                    <Text style={{
+                        fontSize : 30,
+                        fontWeight :'bold',
+                        color:'white',
+                        padding : 5,
+                        
+                    }}>Pressable Button</Text>
+                </Pressable>
             </View>
         </View>
     )
@@ -30,29 +45,11 @@ const User = () => {
 const styles = StyleSheet.create({
     main : {
         flex : 1,
-        
-    },
-    openModalView:{
-        flex : 1,
-        justifyContent :'flex-end'
-    },
-    modalView : {
-        flex : 1,
         justifyContent :'center',
-        alignItems : 'center'
+        alignItems:'center'
     },
-    modalInnerView : {
-        backgroundColor : 'white',
-        padding : 30,
-        shadowColor : 'black',
-        elevation : 30,
-        borderRadius : 5
-    },
-    modalText : {
-        color : 'black',
-        marginBottom : 10,
-        fontSize : 30
-    }
+    
+    
 })
 
 export default User;
