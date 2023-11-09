@@ -1,14 +1,14 @@
 import React from 'react'
 import { View,Text,Button,StyleSheet } from 'react-native'
 
-const User = (props) => {
+const Home = (props) => {
     return (
         <View style={styles.view} >
             <Text style={styles.text}>Hello , Login to continue</Text>
             <Button 
-                title='Go To Home'
+                title='Go To Login'
                 color={'blue'}
-                onPress={()=>props.navigation.navigate('Home')}
+                onPress={()=>props.navigation.navigate('Login')}
             ></Button>
         </View>
       )
@@ -26,5 +26,4 @@ const User = (props) => {
         }
     })
 
-
-export default User;
+export default Home

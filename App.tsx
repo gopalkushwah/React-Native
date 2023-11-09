@@ -1,17 +1,23 @@
 import React from "react";
-import { 
-  StatusBar,
-  Text,
-  View
- } from "react-native";
-// import User from "./components/User";
-import { WebView } from 'react-native-webview';
+
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+
+import Login from "./components/Login";
 import User from "./components/User";
+import Home from "./components/Home";
+
+
+const Stack = createNativeStackNavigator();
 const App = () => {
   return (
-    <View style={{flex :1}}>
-      <User></User>
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Login" component={Login}/>
+        <Stack.Screen name="User" component={User}/>
+        <Stack.Screen name="Home" component={Home}/>
+      </Stack.Navigator>
+    </NavigationContainer>
   )
 }
 
