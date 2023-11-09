@@ -1,12 +1,27 @@
 import React, { useState } from 'react'
-import {StyleSheet, View} from 'react-native';
+import {Button, StyleSheet, View} from 'react-native';
 import WebView from 'react-native-webview';
+import Modal from '../components/Modal';
 
 const User = () => {
+    const [hide,setHide]= useState(false);
+    const handleDataFromChild = (data) => {
+        setHide(data);
+      };
 
     return (
-        <View>
-            
+        <View style={styles.main}>
+            {
+            hide ? 
+            <Modal sendDataToParent={handleDataFromChild} ></Modal> 
+            : 
+            <View style={{flex:1,justifyContent:'flex-end'}}>
+            <Button
+                title='Open Modal'
+                onPress={()=>handleDataFromChild(true)}
+                ></Button>
+            </View>
+            }
         </View>
     )
 }
@@ -14,8 +29,6 @@ const User = () => {
 const styles = StyleSheet.create({
     main : {
         flex : 1,
-        justifyContent :'center',
-        alignItems:'center'
     },
     
     
