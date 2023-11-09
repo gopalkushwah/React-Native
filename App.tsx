@@ -57,31 +57,9 @@ const App = () => {
           }
         }}
       >
-        <Stack.Screen 
-          name="Login" 
-          component={Login}
-          options={{
-            
-            headerTitleStyle:{
-              fontSize :30,
-              fontWeight : 'bold'
-            }
-          }}
-
-        />
-        <Stack.Screen name="User" component={User}
-        options={{
-          
-          headerTitleStyle:{
-            fontSize :30,
-            fontWeight : 'bold'
-          }
-        }}
-        />
-        <Stack.Screen name="Home"
-        
-        
-        component={Home}/>
+        <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen name="User" component={User}/>
+        <Stack.Screen name="Home" component={Home}/>
       </Stack.Navigator>
     </NavigationContainer>
   )

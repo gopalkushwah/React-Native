@@ -2,13 +2,16 @@ import React from 'react'
 import { View, Text, StyleSheet, Button } from 'react-native';
 
 const Login = (props) => {
+    const name = "Gopal";
+    const age = 23;
+
   return (
     <View style={styles.view} >
         <Text style={styles.text}>Hello , Login to continue</Text>
         <Button 
             title='Login'
             color={'blue'}
-            onPress={()=>props.navigation.navigate('User')}
+            onPress={()=>props.navigation.navigate('User',{name,age})}
         ></Button>
     </View>
   )

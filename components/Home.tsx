@@ -5,6 +5,8 @@ const Home = (props) => {
     return (
         <View style={styles.view} >
             <Text style={styles.text}>Hello , Login to continue</Text>
+            <Text style={styles.text}>Name : {props.route.params.name}</Text>
+            <Text style={styles.text}>Age : {props.route.params.age}</Text>
             <Button 
                 title='Go To Login'
                 color={'blue'}
