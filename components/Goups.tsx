@@ -4,7 +4,7 @@ import { View, Text } from 'react-native';
 const Groups = () => {
   return (
     <View>
-        <Text>Groups</Text>
+        <Text style={{fontSize : 30,textAlign :'center'}}>Groups</Text>
     </View>
   )
 }

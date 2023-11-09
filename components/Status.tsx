@@ -4,7 +4,7 @@ import { View, Text } from 'react-native';
 const Status = () => {
   return (
     <View>
-        <Text>Status</Text>
+        <Text style={{fontSize : 30,textAlign :'center'}}>Status</Text>
     </View>
   )
 }

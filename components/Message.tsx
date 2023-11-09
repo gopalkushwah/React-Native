@@ -4,7 +4,7 @@ import { View, Text } from 'react-native';
 const Message = () => {
   return (
     <View>
-        <Text>Message</Text>
+        <Text style={{fontSize : 30,textAlign :'center'}}>Message</Text>
     </View>
 
   )

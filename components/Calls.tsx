@@ -4,7 +4,8 @@ import { View, Text } from 'react-native';
 const Calls = () => {
   return (
     <View>
-        <Text>Calls</Text>
+        <Text style={{fontSize : 30,textAlign :'center'}}>Calls</Text>
+
     </View>
   )
 }

@@ -4,7 +4,7 @@ import { View, Text } from 'react-native';
 const Community = () => {
   return (
     <View>
-        <Text>Community</Text>
+        <Text style={{fontSize : 30,textAlign :'center'}}>Community</Text>
     </View>
   )
 }
