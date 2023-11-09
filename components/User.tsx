@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { View,Text,Button,StyleSheet,TextInput, ScrollView, ActivityIndicator } from 'react-native'
+import { View,Text,Button,StyleSheet,TextInput, ScrollView, ActivityIndicator, FlatList } from 'react-native'
 import { useState } from 'react';
 
 const User = () => {
@@ -21,21 +21,19 @@ const [indicator,setIndicator] = useState(false);
     return (
         <ScrollView>
         {
-           indicator ? <ActivityIndicator size={100} accessible={false}></ActivityIndicator> : null
+            indicator?<ActivityIndicator size={100} ></ActivityIndicator> :
+        <FlatList
+        data={posts}
+        renderItem={({item})=>(
+        <View style={{borderBottomColor:'gold',borderBottomWidth : 1,padding : 10,margin : 5,shadowColor :'black',elevation:3}}>
+            <Text style={{fontSize:30,color :'black'}}>ID : {item.id}</Text>
+            <Text style={{fontSize:30,color :'black'}}>Name : {item.title}</Text>
+            <Text style={{fontSize:30,color :'black'}}></Text>
+            <Text style={{fontSize:30,color :'black'}}>Description : {item.body}</Text>
+        </View>)}
+        >
+        </FlatList>
         }
-        <View >
-            {
-                posts.map((post,index)=>{
-                    return <View key={index}>
-                        <Text style={{fontSize:30,color :'black'}}>ID : {post.id}</Text>
-                        <Text style={{fontSize:30,color :'black'}}>Name : {post.title}</Text>
-                        <Text style={{fontSize:30,color :'black'}}></Text>
-                        <Text style={{fontSize:30,color :'black'}}>Description : {post.body}</Text>
-
-                    </View>
-                })
-            }
-        </View>
         </ScrollView>
     )
 }
