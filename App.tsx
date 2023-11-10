@@ -4,7 +4,7 @@ import React from "react";
 import User from "./components/User";
 const App = () => {
   return (
-    <View>
+    <View style={{flex : 1}}>
       <User/>
     </View>
   )
