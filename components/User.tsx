@@ -3,10 +3,10 @@ import { View,Text,Button,StyleSheet,TextInput, ScrollView, ActivityIndicator, F
 import { useState } from 'react';
 
 const User = () => {
-const [posts,setPosts] = useState([]);
-const [indicator,setIndicator] = useState(false);
+    const [posts,setPosts] = useState([]);
+    const [indicator,setIndicator] = useState(false);
     const getPost= async ()=>{
-        const url = "https://jsonplaceholder.typicode.com/posts";
+        const url = "http://192.168.43.163:8080/posts";
         setIndicator(true);
         let result = await fetch(url);
         setIndicator(false);
@@ -15,24 +15,29 @@ const [indicator,setIndicator] = useState(false);
         
         setPosts(result);
     }
+    
     useEffect(()=>{
         getPost();
     },[])
     return (
         <ScrollView>
         {
-            indicator?<ActivityIndicator size={100} ></ActivityIndicator> :
-        <FlatList
-        data={posts}
-        renderItem={({item})=>(
-        <View style={{borderBottomColor:'gold',borderBottomWidth : 1,padding : 10,margin : 5,shadowColor :'black',elevation:3}}>
-            <Text style={{fontSize:30,color :'black'}}>ID : {item.id}</Text>
-            <Text style={{fontSize:30,color :'black'}}>Name : {item.title}</Text>
-            <Text style={{fontSize:30,color :'black'}}></Text>
-            <Text style={{fontSize:30,color :'black'}}>Description : {item.body}</Text>
-        </View>)}
-        >
-        </FlatList>
+            indicator?<View style={{alignItems :'center',justifyContent :'center'}}>
+                <ActivityIndicator size={100} ></ActivityIndicator>
+            </View> :
+            <View>
+                <FlatList
+                data={posts}
+                renderItem={({item})=>(
+                <View style={{borderBottomColor:'gold',borderBottomWidth : 1,padding : 10,margin : 5,shadowColor :'black',elevation:3}}>
+                    <Text style={{fontSize:30,color :'black'}}>ID : {item.id}</Text>
+                    <Text style={{fontSize:30,color :'black'}}>Name : {item.title}</Text>
+                    <Text style={{fontSize:30,color :'black'}}></Text>
+                    <Text style={{fontSize:30,color :'black'}}>Description : {item.body}</Text>
+                </View>)}
+                >
+                </FlatList>
+            </View>
         }
         </ScrollView>
     )
