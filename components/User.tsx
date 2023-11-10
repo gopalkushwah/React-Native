@@ -6,7 +6,7 @@ const User = () => {
     const [posts,setPosts] = useState([]);
     const [indicator,setIndicator] = useState(false);
     const getPost= async ()=>{
-        const url = "http://192.168.43.163:8080/posts";
+        const url = "http://10.0.2.2:8080/posts";
         setIndicator(true);
         let result = await fetch(url);
         setIndicator(false);
