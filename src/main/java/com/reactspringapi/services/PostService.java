@@ -43,4 +43,8 @@ public class PostService {
         Posts posts = this.getPosts(id);
         this.postsRepository.delete(posts);
     }
+
+    public List<Posts> searchPosts(String query){
+       return this.postsRepository.findBySearchTerm(query);
+    }
 }
