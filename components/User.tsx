@@ -1,11 +1,14 @@
 import React, { useEffect } from 'react'
-import { View,Text,Button,StyleSheet,TextInput, ScrollView, ActivityIndicator, FlatList } from 'react-native'
+import { View,Text,Button,StyleSheet,TextInput, ScrollView, ActivityIndicator, FlatList, Modal } from 'react-native'
 import { useState } from 'react';
 
 const User = () => {
     const [posts,setPosts] = useState([]);
     const [deleteChange,setDeleteChange] = useState(0);
+    const [updateChange,setUpdateChange] = useState(0);
     const [indicator,setIndicator] = useState(false);
+    const [showModal,setShowModal] = useState(false);
+    const [selectedData,setSelectedData] = useState({id:"",title:"",body:""});
     const getPost= async ()=>{
         setIndicator(true);
         const url = "http://10.0.2.2:8080/posts";
@@ -25,10 +28,36 @@ const User = () => {
         console.warn(result);
         
     }
+    const openUpdatePost = (data)=>{
+        setShowModal(true);
+        setSelectedData(data);
+    }
+    const updatePost = async ()=>{
+        try {
+            const url = `http://10.0.2.2:8080/posts/update`;
+            let result = await fetch(url,{
+                method : 'PUT',
+                headers:{
+                    'Content-Type':'application/json'
+                },
+                body : JSON.stringify(selectedData)
+            });
+            result = await result.json();
+            console.warn(result);
+            setUpdateChange(Number.parseInt(result.id));
+            setShowModal(false);
+        } catch (error) {
+        console.warn(error);
+        
+        }
+    }
+    useEffect(()=>{
+        getPost();
+    },[])
 
     useEffect(()=>{
         getPost();
-    },[deleteChange])
+    },[deleteChange,updateChange])
     return (
         <ScrollView>
         {
@@ -48,7 +77,7 @@ const User = () => {
             </View>
         </View>
         {
-            posts.map((item,index)=><View style={styles.dataWrapper}>
+            posts.map((item,index)=><View key={index} style={styles.dataWrapper}>
                 <View style={styles.wrapper}>
                     <View style={styles.wrapper1}>
                         <View style={styles.text1}>
@@ -63,7 +92,7 @@ const User = () => {
                     </View>
                     <View style={styles.wrapper2}>
                         <View style={styles.buttonWrapper}>
-                            <Button color={'blue'} title="Update"></Button>
+                            <Button color={'blue'} title="Update" onPress={()=>openUpdatePost(item)}></Button>
                         </View>
                         <View style={styles.buttonWrapper}>
                             <Button 
@@ -80,6 +109,38 @@ const User = () => {
                 </View>
             </View>)
         }
+        <Modal animationType='fade' visible={showModal} transparent={true}> 
+            <View style={{flex:1,alignItems:'center',justifyContent:'center',backgroundColor:'rgba(0,0,0,0.5)'}}>
+                <View style={{backgroundColor:'white',padding : 40,width : 350,borderRadius:20,shadowColor :'red',elevation : 10,shadowOpacity:3}}>
+                    <View >
+                        <TextInput 
+                        editable={false}
+                        style={{borderColor:'black',borderWidth:1,marginBottom:5,padding:10,borderRadius:10}}
+                        value={selectedData.id.toString()} 
+                        accessible={false}
+                        ></TextInput>
+                    </View>
+                    <View >
+                        <TextInput
+                        style={{borderColor:'black',borderWidth:1,marginBottom:5,padding:10,borderRadius:10}}
+                        value={selectedData.title} 
+                        onChangeText={(text)=>setSelectedData((prevData)=>({ ...prevData, title: text }))}
+                        ></TextInput>
+                    </View>
+                    <View>
+                        <TextInput
+                        style={{borderColor:'black',borderWidth:1,marginBottom:5,padding:10,borderRadius:10}}
+                        value={selectedData.body}
+                        onChangeText={(text)=>setSelectedData((prevData)=>({ ...prevData, body: text }))}
+                        ></TextInput>
+                        
+                    </View>
+                    <Button color={'orange'} title="Update" onPress={updatePost}></Button>
+                    <Text></Text>
+                    <Button color={'blue'} title="Close" onPress={()=>setShowModal(false)}></Button>
+                </View>
+            </View>
+        </Modal>
         </ScrollView>
     )
 }
