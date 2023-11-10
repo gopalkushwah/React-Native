@@ -6,6 +6,7 @@ import java.util.Objects;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -36,4 +37,24 @@ public class PostsController {
             return  ResponseEntity.notFound().build();
     }
     
+
+    @PostMapping("/update")
+    public ResponseEntity<?> updatePost(@RequestBody Posts posts){
+        Posts savePosts = this.postService.updatePosts(posts);
+        if(Objects.nonNull(savePosts))
+            return  ResponseEntity.ok(savePosts);
+        else
+            return  ResponseEntity.ok("Something Went Wrong");
+    }
+    @PostMapping("/delete/{id}")
+    public ResponseEntity<?> deletePost(@PathVariable("id") int id){
+        try {
+            this.postService.deletePosts(id);
+            return ResponseEntity.ok("Deleted Successfully");
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.ok("Deleted Successfully");
+        }
+        
+    }
 }
