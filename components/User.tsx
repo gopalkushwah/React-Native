@@ -6,8 +6,17 @@ const User = () => {
     const [posts,setPosts] = useState({id:"",title:"",body:""});
     const [input,setInput] = useState({title:"",body:""});
     const [indicator,setIndicator] = useState(false);
+    const [titleError,setTitleError] = useState(false);
+    const [bodyError,setBodyError] = useState(false);
     const savePost= async ()=>{
-        // setIndicator(true);
+        !input.title ? setTitleError(true) : setTitleError(false);
+        !input.body ? setBodyError(true) : setBodyError(false);
+
+        if(!input.title  || !input.body){
+            return false;
+        }
+
+        setIndicator(true);
         const post = {
             "title": input.title,
             "body": input.body
@@ -37,6 +46,7 @@ const User = () => {
             
         }
         <View style={{margin :20}}>
+            {titleError ?<Text style={{fontSize:20,color:'red',marginBottom : 5}}>Enter Valid Title</Text> : null}
             <TextInput
             style={{
                 marginBottom : 10,
@@ -48,6 +58,9 @@ const User = () => {
             }}
             onChangeText={(text)=>setInput((prevData)=>({ ...prevData, title: text }))}
             placeholder='Enter title'></TextInput>
+
+            {bodyError ?<Text style={{fontSize:20,color:'red',marginBottom : 5}}>Enter Valid Description</Text> : null}
+            
             <TextInput
             style={{
                 marginBottom : 10,
