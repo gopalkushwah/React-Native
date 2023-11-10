@@ -4,6 +4,7 @@ import { useState } from 'react';
 
 const User = () => {
     const [posts,setPosts] = useState([]);
+    const [posts1,setPosts1] = useState([]);
     const [deleteChange,setDeleteChange] = useState(0);
     const [updateChange,setUpdateChange] = useState(0);
     const [indicator,setIndicator] = useState(false);
@@ -16,6 +17,7 @@ const User = () => {
         result = await result.json();
         setIndicator(false);
         setPosts(result);
+        setPosts1(result);
     }
     const deletePost= async (id)=>{
         setIndicator(true);
@@ -51,6 +53,19 @@ const User = () => {
         
         }
     }
+
+
+    const searchPost = async (text) =>{
+        // if(!text){
+            const url = `http://10.0.2.2:8080/posts/q/${text}`;
+            let result = await fetch(url);
+            result = await result.json();
+            setPosts(result);
+        // }else{
+        //     getPost();
+        // }
+    }
+
     useEffect(()=>{
         getPost();
     },[])
@@ -76,8 +91,13 @@ const User = () => {
                 <Text style={styles.text}>BODY</Text>
             </View>
         </View>
+        <View style={styles.searchWrapper}>
+            <TextInput 
+            onChangeText={(text)=>searchPost(text)}
+            placeholder='Search' style={{borderColor:'black',borderWidth:1,borderRadius:5,padding :10,fontSize :20}}></TextInput>
+        </View>
         {
-            posts.map((item,index)=><View key={index} style={styles.dataWrapper}>
+           posts.length>0 ? posts.map((item,index)=><View key={index} style={styles.dataWrapper}>
                 <View style={styles.wrapper}>
                     <View style={styles.wrapper1}>
                         <View style={styles.text1}>
@@ -108,6 +128,37 @@ const User = () => {
                     </View>
                 </View>
             </View>)
+            : posts1.map((item,index)=><View key={index} style={styles.dataWrapper}>
+            <View style={styles.wrapper}>
+                <View style={styles.wrapper1}>
+                    <View style={styles.text1}>
+                        <Text style={styles.text}>{item.id}</Text>
+                    </View>
+                    <View style={styles.text2}>
+                        <Text style={styles.text}>{item.title}</Text>
+                    </View>
+                    <View style={styles.text3}>
+                        <Text style={styles.text}>{item.body}</Text>
+                    </View>
+                </View>
+                <View style={styles.wrapper2}>
+                    <View style={styles.buttonWrapper}>
+                        <Button color={'blue'} title="Update" onPress={()=>openUpdatePost(item)}></Button>
+                    </View>
+                    <View style={styles.buttonWrapper}>
+                        <Button 
+                            color={'red'} 
+                            title="delete"
+                            onPress={()=>{
+                                deletePost(item.id);
+                                setDeleteChange(item.id+1);
+                            }}
+                        ></Button>
+                    
+                    </View>
+                </View>
+            </View>
+        </View>)
         }
         <Modal animationType='fade' visible={showModal} transparent={true}> 
             <View style={{flex:1,alignItems:'center',justifyContent:'center',backgroundColor:'rgba(0,0,0,0.5)'}}>
@@ -115,7 +166,7 @@ const User = () => {
                     <View >
                         <TextInput 
                         editable={false}
-                        style={{borderColor:'black',borderWidth:1,marginBottom:5,padding:10,borderRadius:10}}
+                        style={{borderColor:'black',borderWidth:1,marginBottom:5,padding:10,borderRadius:10,color:'black'}}
                         value={selectedData.id.toString()} 
                         accessible={false}
                         ></TextInput>
@@ -189,6 +240,9 @@ const styles = StyleSheet.create({
         fontSize : 18,
         color:'black'
 
+    },
+    searchWrapper :{
+        margin :20
     }
 })
 
