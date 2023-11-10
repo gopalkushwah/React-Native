@@ -3,42 +3,42 @@ import { View,Text,Button,StyleSheet,TextInput, ScrollView, ActivityIndicator, F
 import { useState } from 'react';
 
 const User = () => {
-    const [posts,setPosts] = useState([]);
+    const [posts,setPosts] = useState({id:"",title:"",body:""});
     const [indicator,setIndicator] = useState(false);
-    const getPost= async ()=>{
-        const url = "http://10.0.2.2:8080/posts";
+    const savePost= async ()=>{
         setIndicator(true);
-        let result = await fetch(url);
-        setIndicator(false);
+        const post = {
+            "title": "Hello I am Sumit  learning javasript",
+            "body": "Javasript is programming language"
+        };
+        const url = "http://10.0.2.2:8080/save-posts";
+        let result = await fetch(url,{
+            method :'POST',
+            headers : {
+                'Content-Type':'application/json'
+            },
+            body : JSON.stringify(post) 
+        });
         result = await result.json();
+        setIndicator(false);
         // console.warn(result);
         
         setPosts(result);
     }
-    
-    useEffect(()=>{
-        getPost();
-    },[])
     return (
         <ScrollView>
         {
             indicator?<View style={{alignItems :'center',justifyContent :'center'}}>
                 <ActivityIndicator size={100} ></ActivityIndicator>
-            </View> :
-            <View>
-                <FlatList
-                data={posts}
-                renderItem={({item})=>(
-                <View style={{borderBottomColor:'gold',borderBottomWidth : 1,padding : 10,margin : 5,shadowColor :'black',elevation:3}}>
-                    <Text style={{fontSize:30,color :'black'}}>ID : {item.id}</Text>
-                    <Text style={{fontSize:30,color :'black'}}>Name : {item.title}</Text>
-                    <Text style={{fontSize:30,color :'black'}}></Text>
-                    <Text style={{fontSize:30,color :'black'}}>Description : {item.body}</Text>
-                </View>)}
-                >
-                </FlatList>
-            </View>
+            </View> : null
+            
         }
+        <View>
+            <Button title='Save Data' onPress={savePost}></Button>
+            <Text style={{fontSize:30,color:'black'}}>ID : {posts.id}</Text>
+            <Text style={{fontSize:30,color:'black'}}>TITLE : {posts.title}</Text>
+            <Text style={{fontSize:30,color:'black'}}>BODY : {posts.body}</Text>
+        </View>
         </ScrollView>
     )
 }
