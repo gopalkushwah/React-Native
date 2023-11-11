@@ -86,7 +86,7 @@ const App = () => {
     },
 ]
   return (
-      <View style={{flex : 1}}>
+      <View style={{flex : 1,backgroundColor:'#e2e2e2'}}>
         <Header/>
         <ScrollView>
         {
