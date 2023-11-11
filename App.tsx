@@ -91,7 +91,7 @@ const App = () => {
         <ScrollView>
         {
         products.map((item)=>(
-            <Product item={item}/>
+            <Product key={item.id} item={item}/>
           ))
        }
       </ScrollView>

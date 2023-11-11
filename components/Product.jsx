@@ -10,7 +10,7 @@ const Product = ({item}) => {
 
 
   return (
-        <View key={item.id} style={{shadowColor : 'rgba(0,0,0,0.2)',elevation : 10}}>
+        <View style={{shadowColor : 'rgba(0,0,0,0.2)',elevation : 10}}>
             <View key={item.id} style={{flexDirection :'row',margin : 8,borderWidth : 1,borderColor : 'blue',borderRadius: 10,padding : 8}}>
                 <View style={{flex : 1,borderRadius: 10}}>
                     <Image style={{width : 120,height : 143,borderRadius: 10}} source={item.image}></Image>
