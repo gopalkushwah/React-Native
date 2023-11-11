@@ -15,6 +15,7 @@ const Product = ({item}) => {
                 <View style={{flex : 1,borderRadius: 10}}>
                     <Image style={{width : 120,height : 143,borderRadius: 10}} source={item.image}></Image>
                 </View>
+
                 <View style={{flex : 2}}>
                     <Text style={{color:'black',fontSize: 20}}>ID : {item.id}</Text>
                     <Text style={{color:'black',fontSize: 20}}>NAME : {item.name}</Text>
