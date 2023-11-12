@@ -1,25 +1,28 @@
 import React,{useEffect,useState} from "react";
 import {Image, Text, View,Button} from "react-native";
 import {useDispatch,useSelector} from 'react-redux'
-import { addToCart } from "./redux/action";
-
+import { addToCart, removeFromCart } from "./redux/action";
 const Product = ({item}) => {
     const [isAdded, setIsAdded] = useState(false)
+    const cartData = useSelector((state)=>state.reducer);
     const dispatch = useDispatch();
     const handleAddToCart = (item) =>{
         dispatch(addToCart(item));
     }
-
-    const cartData = useSelector((state)=>state.reducer);
+    
+    
+    const handleRemoveFromCart = (item) =>{
+         dispatch(removeFromCart(item));
+    }
 
     useEffect(() => {
-        if(cartData && cartData.length){
-            cartData.forEach((element)=>{
-                if(element.id === item.id){
-                    setIsAdded(true);
-                }
-            })
-        }
+        let result = cartData.filter(element =>{
+            return element.id === item.id
+        });
+        if(result.length)
+            setIsAdded(true);
+        else
+            setIsAdded(false);
     }, [cartData])
     
   return (
@@ -38,7 +41,7 @@ const Product = ({item}) => {
                         isAdded ?
                             <Button 
                                 title='Remove from cart'
-                                onPress={()=>handleAddToCart(item)}
+                                onPress={()=>handleRemoveFromCart(item)}
                             ></Button> 
                             : 
                             <Button 
